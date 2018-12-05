@@ -13,8 +13,8 @@ const DrawerContent: React.SFC<Props> = ({ history }) => (
       <ListItem button onClick={() => history.push('/')}>
         <ListItemText primary="Home" />
       </ListItem>
-      <ListItem button onClick={() => history.push('/books')}>
-        <ListItemText primary="Books" />
+      <ListItem button onClick={() => history.push('/users')}>
+        <ListItemText primary="Users" />
       </ListItem>
     </List>
     <Divider />

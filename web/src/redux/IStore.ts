@@ -1,9 +1,9 @@
 import { ICounter } from 'src/redux/modules/counter/types'
-import { IBooks } from 'src/redux/modules/books/types'
+import { IUsers } from 'src/redux/modules/users/types'
 
 export interface IStore {
   routing: any
   counter: ICounter
-  books: IBooks
+  users: IUsers
   form: any
 }

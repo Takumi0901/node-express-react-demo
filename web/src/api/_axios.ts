@@ -53,7 +53,6 @@ export default (config: APIConfig): API => {
     ) {
       _retry = fallback
     },
-    getTest: req => _wrap(() => http.get(`/users?page=${req.page}&per_page=${req.perPage}`)),
-    getBooks: () => _wrap(() => http.get(`/books`))
+    getUsers: () => _wrap(() => http.get(`/users`))
   }
 }

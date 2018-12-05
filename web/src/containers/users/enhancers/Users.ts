@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 import { IStore } from 'src/redux/IStore'
 import { compose, lifecycle } from 'recompose'
-import { failedBooks, requestBooks, successBooks } from 'src/redux/modules/books/index'
-import { IBooks } from 'src/redux/modules/books/types'
+import { failedUsers, requestUsers, successUsers } from 'src/redux/modules/users/index'
+import { IUsers } from 'src/redux/modules/users/types'
 import API from 'src/api/API'
 
 export interface Props {
-  books: IBooks
+  users: IUsers
   getBooks(): void
 }
 
@@ -17,17 +17,17 @@ const mapDispatchToProps = dispatch => ({ dispatch })
 const mergeProps = (state: IStore, { dispatch }, props: Props) => {
   return {
     ...props,
-    books: state.books,
-    getBooks() {
-      dispatch(requestBooks())
-      API.getBooks()
-        .then(res => dispatch(successBooks(res.body)))
-        .catch(err => dispatch(failedBooks(err)))
+    users: state.users,
+    getUsers() {
+      dispatch(requestUsers())
+      API.getUsers()
+        .then(res => dispatch(successUsers(res.body)))
+        .catch(err => dispatch(failedUsers(err)))
     }
   }
 }
 
-export const booksEnhancer = compose<Props, {}>(
+export const usersEnhancer = compose<Props, {}>(
   connect(
     mapStateToProps,
     mapDispatchToProps,
@@ -35,7 +35,7 @@ export const booksEnhancer = compose<Props, {}>(
   ),
   lifecycle({
     componentDidMount() {
-      this.props.getBooks()
+      this.props.getUsers()
     }
   })
 )

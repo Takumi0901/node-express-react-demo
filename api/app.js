@@ -9,41 +9,41 @@ var usersRouter = require('./routes/users');
 var booksRouter = require('./routes/books');
 
 var app = express();
-var mysql = require("mysql");
-
-var pool = mysql.createPool({
-  connectionLimit : 10,
-  host: 'localhost',
-  port: '3306',
-  user: 'root',
-  password: 'root',
-  database: 'react_rails_sample'
-});
-
-pool.on('connection', function (connection) {
-  console.log("新しいコネクションプールが作成されました");
-});
-pool.on('acquire', function (connection) {
-  console.log("コネクションプールから接続が獲得されました");
-});
-pool.on('release', function () {
-  console.log("コネクションプールが戻されました");
-});
-pool.on('enqueue', function () {
-  console.log("エンキュー");
-});
-
-global.pool = pool;
+// var mysql = require("mysql");
+//
+// var pool = mysql.createPool({
+//   connectionLimit : 10,
+//   host: 'localhost',
+//   port: '3306',
+//   user: 'root',
+//   password: 'root',
+//   database: 'sample_express'
+// });
+//
+// pool.on('connection', function (connection) {
+//   console.log("新しいコネクションプールが作成されました");
+// });
+// pool.on('acquire', function (connection) {
+//   console.log("コネクションプールから接続が獲得されました");
+// });
+// pool.on('release', function () {
+//   console.log("コネクションプールが戻されました");
+// });
+// pool.on('enqueue', function () {
+//   console.log("エンキュー");
+// });
+//
+// global.pool = pool;
 
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
-//
-// app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import BooksList from '../organisms/BooksList'
+import UsersList from '../organisms/UsersList'
 
-const Books: React.SFC<{}> = () => {
+const Users: React.SFC<{}> = () => {
   return (
     <React.Fragment>
       <Helmet>
         <title>title</title>
       </Helmet>
-      <BooksList />
+      <UsersList />
     </React.Fragment>
   )
 }
 
-export default withRouter<any>(Books)
+export default withRouter<any>(Users)

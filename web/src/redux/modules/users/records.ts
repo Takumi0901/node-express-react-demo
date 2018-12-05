@@ -1,8 +1,8 @@
 import { Record } from 'immutable'
-import { IBooks } from 'src/redux/modules/books/types'
+import { IUsers } from 'src/redux/modules/users/types'
 
-export class BooksRecord extends Record({ list: [], isFetching: false, isSucceeded: false, isFailed: false })
-  implements IBooks {
+export class UsersRecord extends Record({ list: [], isFetching: false, isSucceeded: false, isFailed: false })
+  implements IUsers {
   request() {
     return this.withMutations(s => s.set('isFetching', true))
   }

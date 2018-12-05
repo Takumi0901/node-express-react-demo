@@ -5,9 +5,9 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-import { booksEnhancer, Props } from '../enhancers/Books'
+import { usersEnhancer, Props } from '../enhancers/Users'
 
-const CounterActions: React.SFC<Props> = props => {
+const UserList: React.SFC<Props> = props => {
   return (
     <Paper elevation={0}>
       <Table>
@@ -18,7 +18,7 @@ const CounterActions: React.SFC<Props> = props => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.books.list.map((e, key) => (
+          {props.users.list.map((e, key) => (
             <TableRow key={key}>
               <TableCell>{e.id}</TableCell>
               <TableCell>{e.name}</TableCell>
@@ -30,4 +30,4 @@ const CounterActions: React.SFC<Props> = props => {
   )
 }
 
-export default booksEnhancer(CounterActions)
+export default usersEnhancer(UserList)
