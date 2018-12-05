@@ -1,6 +1,7 @@
 import config from './config'
 import axios from './_axios'
-import APIResponse, { User } from './response'
+import APIResponse, { User as UserResponse } from './response'
+import { User } from './request'
 
 export interface APIConfig {
   baseURL: string
@@ -17,7 +18,8 @@ export interface API {
   setRetryStrategy: (
     fallback: (e: APIResponse<any>, retry: () => Promise<APIResponse<any>>) => Promise<APIResponse<any>>
   ) => void
-  getUsers: () => Promise<APIResponse<User[]>>
+  getUsers: () => Promise<APIResponse<UserResponse[]>>
+  postUser: (req: User) => Promise<APIResponse<{ message: string }>>
 }
 
 export const factory = (config: APIConfig): API => {

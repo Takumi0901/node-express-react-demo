@@ -12,8 +12,8 @@ router.get('/', function(req, res, next) {
 router.post('/create', function(req, res, next) {
   models.User.create({
     name: req.body.name
-  }).then((createdUser) => {
-    console.log('hogehoge');
+  }).then(() => {
+    res.send({message: 'OK'})
   });
 });
 

@@ -53,6 +53,7 @@ export default (config: APIConfig): API => {
     ) {
       _retry = fallback
     },
-    getUsers: () => _wrap(() => http.get(`/users`))
+    getUsers: () => _wrap(() => http.get(`/users`)),
+    postUser: req => _wrap(() => http.post(`/users/create`, req))
   }
 }
