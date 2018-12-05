@@ -7,6 +7,7 @@ import Footer from 'src/containers/app/organisms/Footer'
 import baseStyle from 'src/styles/base'
 import styled, { ThemeProvider, theme, css } from 'src/styles/index'
 import DrawerContent from './organisms/Drawer'
+import { SnackbarProvider } from 'notistack'
 
 interface Props {}
 
@@ -19,14 +20,16 @@ class App extends React.Component<Props> {
     baseStyle(theme)
     return (
       <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <ScWrap>
-            <Header />
-            <DrawerContent />
-            <ScContent>{this.props.children}</ScContent>
-          </ScWrap>
-          <Footer />
-        </React.Fragment>
+        <SnackbarProvider maxSnack={3}>
+          <React.Fragment>
+            <ScWrap>
+              <Header />
+              <DrawerContent />
+              <ScContent>{this.props.children}</ScContent>
+            </ScWrap>
+            <Footer />
+          </React.Fragment>
+        </SnackbarProvider>
       </ThemeProvider>
     )
   }

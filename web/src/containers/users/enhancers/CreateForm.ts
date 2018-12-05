@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { reduxForm, InjectedFormProps } from 'redux-form'
 import { compose, withHandlers } from 'recompose'
 import API from 'src/api/API'
+import { withSnackbar } from 'notistack'
 
 export type AllFormProps = Props & InjectedFormProps<FormData, Props>
 
@@ -15,12 +16,12 @@ const connector = connect(() => {
 
 export const formEnhancer = compose<AllFormProps, {}>(
   connector,
+  withSnackbar,
   withHandlers({
-    onSubmit: () => values => {
-      console.log(values)
+    onSubmit: props => values => {
       API.postUser(values)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        .then(() => props.enqueueSnackbar('Success'))
+        .catch(() => props.enqueueSnackbar('Error', { variant: 'error' }))
     }
   }),
   reduxForm({

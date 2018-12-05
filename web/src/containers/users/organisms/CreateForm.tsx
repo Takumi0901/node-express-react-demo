@@ -13,7 +13,7 @@ const CreateForm: React.SFC<AllFormProps> = props => {
       <Typography variant="headline">ユーザー登録</Typography>
       <Field component={FieldText} name="name" type="text" label={'ユーザー名を入力'} />
       <div style={{ marginTop: '24px' }}>
-        <Button variant="contained" onClick={() => handleSubmit(onSubmit())}>
+        <Button variant="contained" onClick={handleSubmit(onSubmit)}>
           Create
         </Button>
       </div>
